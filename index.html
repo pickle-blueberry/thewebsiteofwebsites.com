@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>the website of websites</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    :root {
+      --bg-color: #DCDFF5;
+      --card-bg: #FFFFFF;
+      --text-main: #1A1A1E;
+      --text-sub: #5A5A66;
+      --border-color: #C8CCE8;
+      --btn-bg: #E8EAF7;
+      --btn-text: #2A2A38;
+      --active-btn-bg: #001F3F;
+      --active-btn-text: #FFFFFF;
+      --font-family: 'Antique Olive', 'Trebuchet MS', 'Inter', sans-serif;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121214;
+      --card-bg: #1D1D22;
+      --text-main: #F0F0F5;
+      --text-sub: #9090A0;
+      --border-color: #2D2D35;
+      --btn-bg: #26262E;
+      --btn-text: #B0B0C0;
+      --active-btn-bg: #001F3F;
+      --active-btn-text: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px 20px 20px;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: var(--font-family);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      margin-top: 10px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 35px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab-btn {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border: 1px solid var(--border-color);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-family: var(--font-family);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .tab-btn:hover {
+      opacity: 0.9;
+    }
+
+    .tab-btn.active {
+      background-color: var(--active-btn-bg) !important;
+      color: var(--active-btn-text) !important;
+      border-color: var(--active-btn-bg) !important;
+      box-shadow: 0 4px 14px rgba(0, 31, 63, 0.35);
+    }
+
+    .content-area {
+      width: 100%;
+      max-width: 800px;
+      flex: 1;
+    }
+
+    .tab-content {
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .tab-content.active {
+      display: grid;
+    }
+
+    .site-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 22px;
+      text-decoration: none;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 110px;
+    }
+
+    .site-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--active-btn-bg);
+    }
+
+    .site-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .site-url {
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      word-break: break-all;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px 0 10px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="theme-toggle" onclick="toggleTheme()">Dark</button>
+
+  <header>
+    <h1>the website of websites</h1>
+    <div class="subtitle">i hate studying</div>
+  </header>
+
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab('tab1', this)">boring everyday sites</button>
+    <button class="tab-btn" onclick="switchTab('tab2', this)">cool study websites</button>
+    <button class="tab-btn" onclick="switchTab('tab3', this)">random sites that are cool</button>
+  </div>
+
+  <div class="content-area">
+    <!-- Tab 1: Boring Everyday Sites -->
+    <div id="tab1" class="tab-content active">
+      <a href="https://docs.google.com" target="_blank" class="site-card">
+        <div class="site-title">Google Docs</div>
+        <div class="site-url">docs.google.com</div>
+      </a>
+      <a href="https://slides.google.com" target="_blank" class="site-card">
+        <div class="site-title">Google Slides</div>
+        <div class="site-url">slides.google.com</div>
+      </a>
+      <a href="https://www.canva.com" target="_blank" class="site-card">
+        <div class="site-title">Canva</div>
+        <div class="site-url">canva.com</div>
+      </a>
+      <a href="https://drive.google.com" target="_blank" class="site-card">
+        <div class="site-title">Google Drive</div>
+        <div class="site-url">drive.google.com</div>
+      </a>
+    </div>
+
+    <!-- Tab 2: Cool Study Websites -->
+    <div id="tab2" class="tab-content">
+      <a href="https://memorizer.me/" target="_blank" class="site-card">
+        <div class="site-title">Memorizer</div>
+        <div class="site-url">memorizer.me</div>
+      </a>
+      <a href="https://pomofocus.io/" target="_blank" class="site-card">
+        <div class="site-title">Pomofocus</div>
+        <div class="site-url">pomofocus.io</div>
+      </a>
+      <a href="https://quizlet.com/latest" target="_blank" class="site-card">
+        <div class="site-title">Quizlet</div>
+        <div class="site-url">quizlet.com/latest</div>
+      </a>
+      <a href="https://flashcardmaker.org/" target="_blank" class="site-card">
+        <div class="site-title">Flashcard Maker</div>
+        <div class="site-url">flashcardmaker.org</div>
+      </a>
+    </div>
+
+    <!-- Tab 3: Random Sites That Are Cool -->
+    <div id="tab3" class="tab-content">
+      <a href="https://www.sticksstones.org/the-void" target="_blank" class="site-card">
+        <div class="site-title">Scream Into The Void</div>
+        <div class="site-url">sticksstones.org/the-void</div>
+      </a>
+      <a href="https://asoftmurmur.com/" target="_blank" class="site-card">
+        <div class="site-title">A Soft Murmur</div>
+        <div class="site-url">asoftmurmur.com</div>
+      </a>
+      <a href="https://window-swap.com/" target="_blank" class="site-card">
+        <div class="site-title">WindowSwap</div>
+        <div class="site-url">window-swap.com</div>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    10000000% made by ai btw (oopsiepoopsies)
+  </footer>
+
+  <script>
+    function switchTab(tabId, btnElement) {
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.remove('active'));
+
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(tabId).classList.add('active');
+      btnElement.classList.add('active');
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const themeBtn = document.querySelector('.theme-toggle');
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.removeAttribute('data-theme');
+        themeBtn.textContent = 'Dark';
+      } else {
+        body.setAttribute('data-theme', 'dark');
+        themeBtn.textContent = 'Light';
+      }
+    }
+  </script>
+</body>
+</html>
